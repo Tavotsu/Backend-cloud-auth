@@ -1,20 +1,12 @@
 server:
   port: 8080
-
 spring:
   application:
     name: auth-service
   security:
     oauth2:
-      client:
-        registration:
-          azure:
-            provider: azure
-            client-id: c6445b4c-7863-42ac-a620-2fa3b5ea58d8
-            client-secret: ${AZURE_CLIENT_SECRET:AQUI_TU_SECRETO}
-            scope: openid, profile, email
-            authorization-grant-type: authorization_code
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
-        provider:
-          azure:
-            issuer-uri: https://login.microsoftonline.com/8ea291c8-4670-4598-8f0f-b5e216b5b755/v2.0
+      resourceserver:
+        jwt:
+          issuer-uri: https://login.microsoftonline.com/
+          tenant-id: 8ea291c8-4670-4598-8f0f-b5e216b5b755
+          audience: c6445b4c-7863-42ac-a620-2fa3b5ea58d8
